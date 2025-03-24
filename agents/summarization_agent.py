@@ -26,7 +26,7 @@ class SummarizationAgent:
         logger.info("Initializing SummarizationAgent...")
         try:
             genai.configure(api_key=api_key)
-            self.llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=api_key)
+            self.llm = ChatGoogleGenerativeAI(model="models/gemini-1.5-pro", google_api_key=api_key)
             logger.info("Google Generative AI configured successfully")
             
             self.prompt = PromptTemplate.from_template("Summarize this: {text}")
