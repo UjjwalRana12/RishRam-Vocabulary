@@ -44,6 +44,7 @@ class SummarizationAgent:
         text = text.replace("\n", " ").replace("\r", "").strip()
         text = re.sub(r"[^\x20-\x7E]", "", text)
         text = re.sub(r"\\", "", text)
+        text = re.sub(r"\b(\w+)'s\b", r"\1", text)
         return text[:1024]
 
     def summarize(self, text: str) -> str:
