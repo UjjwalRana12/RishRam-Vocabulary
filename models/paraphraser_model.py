@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from enum import Enum
+from typing import Union
 
 
 class ParaphraseMode(str, Enum):
@@ -10,14 +11,20 @@ class ParaphraseMode(str, Enum):
     concise = "concise"
     expanded = "expanded"
     humanize = "humanize"
+    academic = "academic"
+    boomer = "boomer"
+    child = "like a 5-year-old child" 
+    creative="creative"
+    expand="expand"
+    shorten="shorten"
 
 
 class ParaphraseRequest(BaseModel):
-    mode: ParaphraseMode
+    mode: Union[ParaphraseMode, str]  
     input_text: str
 
 
 class ParaphraseResponse(BaseModel):
-    mode: ParaphraseMode
+    mode: str  
     input_text: str
     paraphrased_text: str
